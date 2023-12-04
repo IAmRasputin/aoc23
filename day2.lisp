@@ -76,3 +76,15 @@
                                   (possible g test-bag))
                                 games)))
     (apply #'+ (map 'list #'game-id possibilities))))
+
+
+(defun game-power (game)
+  (let ((bag (game-bag game)))
+    (* (red-cubes bag)
+       (blue-cubes bag)
+       (green-cubes bag))))
+
+(defun part2 ()
+  (let* ((input (input-lines 2))
+         (games (parse-games input)))
+    (apply #'+ (map 'list #'game-power games))))
