@@ -2,8 +2,10 @@
 (uiop:define-package #:aoc23/util
   (:nicknames #:util)
   (:use :cl :alexandria :serapeum)
-  (:export :input-string :input-lines :prompt-to-string :echo-prompt))
+  (:export :input-string :input-lines :prompt-to-string :echo-prompt :digit-chars))
 (in-package :aoc23/util)
+
+(defvar digit-chars '(#\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9))
 
 (defun input-string (day)
   (let ((filename (asdf:system-relative-pathname :aoc23 (format nil "input/day~d/input" day))))
