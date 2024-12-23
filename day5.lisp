@@ -8,19 +8,28 @@
 
 (defvar *input* (input-lines 5))
 
+(defun compile-map (conversions)
+  (let* ((range-strings (lines conversions))
+         (ranges (mapcar (lambda (rs)
+                           (mapcar #'parse-integer (split-string rs)))
+                         range-strings)))
+    (lambda (input)
+      `(cond
+         ,@(mapcar (lambda (range)
+                     )
+                   ranges)
+         ((t input))))))
+
+
 (defun input-seeds ()
   (let ((numbers (string-trim " " (second (split-string (first *input*) :separator '(#\:))))))
     (mapcar #'parse-integer (split-string numbers))))
 
-
 (defmacro compile-range (first-start second-start range-size)
-  `(lambda (input)
-     (when (<= ,first-start ,input ,(+ first-start range-size))
-       (+ ,second-start (- input ,first-start)))))
+  )
 
 (defun input-maps (from to)
-  (let* ((map-strings (cdr (split-sequence-if #'blankp *input*)))
-         ())
+  (let* ((map-strings (cdr (split-sequence-if #'blankp *input*))))
     ))
 
 (defun part1 ()
